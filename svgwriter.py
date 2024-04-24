@@ -10,7 +10,7 @@ def create_text_svg(file_name,text_content, drawing_size =(1000,1000), text_posi
     """
     dwg = svgwrite.Drawing(file_name, drawing_size)
 
-    dwg.add(dwg.text(text_content, insert=text_position, fill=color,style=f"font-family: {font_family}; font-size: {font_size} font-weight: {font_weight}; font-style: {font_style}"))
+    dwg.add(dwg.text(text_content, insert=text_position, fill=color))
      
     dwg.save()
 
