@@ -12,7 +12,7 @@ dwg = create_text_svg("CHANGEME.svg", "Hello, World!", color="red")
 # Read the file and modify the text
 
 #TODO 1. Change the name of the .svg file name below if you want, this will be the name of the modified file
-modify_svg(dwg,"modified_text.svg")
+modify_svg(dwg,"modified_text4.svg", color="purple", font_size="40px", font_weight="bold", font_family="Luminari", font_style="oblique")
 
 
 

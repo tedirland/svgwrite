@@ -1,6 +1,6 @@
 import svgwrite
 
-def create_text_svg(file_name,text_content, drawing_size =(300,300), text_position=(150,250), color="black", font_family="Arial", font_size="20px", font_weight="bold", font_style="normal"):
+def create_text_svg(file_name,text_content, drawing_size =(1000,1000), text_position=(150,250), color="black", font_family="Arial", font_size="20px", font_weight="bold", font_style="normal"):
     """Creates a new svg file containing text.
 
     To call the function, you need to provide two pieces of information
