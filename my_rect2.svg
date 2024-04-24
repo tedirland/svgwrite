@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<svg baseProfile="full" height="300px" version="1.1" width="300px" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs /><rect fill="blue" height="20" width="50" x="100" y="100" /><circle cx="120" cy="90" fill="red" r="20" /><text fill="black" x="100" y="110">Hello SVG</text></svg>

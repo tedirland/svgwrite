@@ -1,27 +1,54 @@
+# Standard Python Libraty to modify svg files
+import xml.etree.ElementTree as ET
+# Standard Python Library to create svg files
 import svgwrite
 
-# Create a new drawing
-dwg = svgwrite.Drawing('my_rect3.svg', size=('300px', '300px'))
 
-dwg.add(dwg.rect(insert=(100, 100), size=(50, 20), fill='blue'))
+def modify_svg(starting_file, output_file):
+    # Parse the existing SVG file
+    tree = ET.parse(starting_file)
+    root = tree.getroot()
 
-# Add a red circle
-dwg.add(dwg.circle(center=(120, 90), r=20, fill='red'))
+    # Print debugging information about the root element
+    print(root.tag)
 
-# Add text without styling
-dwg.add(dwg.text('Hello SVG', insert=(100, 110), fill='black'))
+    # Specify the namespace, if your SVG uses one (common with SVG files)
+    namespaces = {'svg': 'http://www.w3.org/2000/svg'}  # Adjust if different
+    
+    # Example: Changing the fill color of all 'rect' (rectangle) elements
+    # You may need to change 'rect' to another tag depending on what you want to modify
+    for element in root.findall('.//svg:text', namespaces=namespaces):
+        element.set("fill", 'blue')
 
-
-brian = {
-    "first_name": "Brian",
-    "last_name": "Keehner",
-    "font": "Arial"
-}
-font_family = {"Arial"}
-
-# Add text with styling
-dwg.add(dwg.text('Hello SVG', insert=(10, 50), fill='green', 
-                 style=f"font-family: {font_family}; font-size: 20px; font-weight: bold; font-style: italic;"))
+    # Write the modified SVG to a new file
+    tree.write(output_file)
 
 
-dwg.save()
+def create_text_svg(file_name,text_content, drawing_size =(300,300), text_position=(150,250), color="black", font_family="Arial", font_size="20px", font_weight="bold", font_style="normal"):
+    """Creates a new svg file containing text.
+
+    To call the function, you need to provide two pieces of information
+
+    1. The name of the file you'd like to create
+    2. The content of the text
+    """
+    dwg = svgwrite.Drawing(file_name, drawing_size)
+
+    dwg.add(dwg.text(text_content, insert=text_position, fill=color,style=f"font-family: {font_family}; font-size: {font_size} font-weight: {font_weight}; font-style: {font_style}"))
+     
+    dwg.save()
+
+    return file_name
+
+
+# Create an initail text drawing
+create_text_svg("text_drawing.svg", "Hello, World!", color="red")
+
+# Read the file and modify the text
+modify_svg("text_drawing.svg","modified_text.svg")
+
+
+
+
+
+
